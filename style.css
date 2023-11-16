@@ -1,0 +1,37 @@
+body {
+    margin: 0; /* The light green field to be from end to end*/
+    background: linear-gradient(skyblue, darkblue);
+}
+
+header {
+    text-align: center; /* Center text */
+    font-size: 50px; /* Text size */
+    background-color: skyblue; /* Background color */
+    color: white; /* Text color */
+    font-weight: bold; /* Bold text */
+    font-family: Snell Roundhand, cursive; /* Specify the font */
+    line-height: 2.2;
+}
+
+#imageContainer {
+    text-align: center; /* Centered pictures */
+}
+
+#imageContainer img {
+    border: 5px solid white; /* Border color and size */
+    width: 400px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+    margin: 5px; /* Space between pictures */
+    display: inline-block; /* Adjust size */
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
