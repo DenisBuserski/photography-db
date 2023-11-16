@@ -29,16 +29,29 @@ function loadImages() {
 }
 
 async function fetchImageFiles(folderPath) {
-    try {
-        const response = await fetch(folderPath);
-        const text = await response.text();
-        const parser = new DOMParser();
-        const htmlDoc = parser.parseFromString(text, 'text/html');
+    // try {
+    //     const response = await fetch(folderPath);
+    //     const text = await response.text();
+    //     const parser = new DOMParser();
+    //     const htmlDoc = parser.parseFromString(text, 'text/html');
 
-        const links = htmlDoc.querySelectorAll('a');
-        const imageFiles = Array.from(links)
-            .filter(link => link.href.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
-            .map(link => link.href.split('/').pop());
+    //     const links = htmlDoc.querySelectorAll('a');
+    //     const imageFiles = Array.from(links)
+    //         .filter(link => link.href.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
+    //         .map(link => link.href.split('/').pop());
+
+    //     return imageFiles;
+    // } catch (error) {
+    //     throw error;
+    // }
+
+    try {
+        const response = await fetch(`https://api.github.com/repos/DenisBuserski/photography-db/contents/${folderPath}`);
+        const data = await response.json();
+
+        const imageFiles = data
+            .filter(item => item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
+            .map(item => item.download_url);
 
         return imageFiles;
     } catch (error) {
