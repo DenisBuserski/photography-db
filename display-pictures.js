@@ -1,6 +1,6 @@
 const imageContainer = document.getElementById('imageContainer');
-const imageFolder = 'pictures/'; // Path to your pictures folder
-// const imageFolder = 'https://DenisBuserski.github.io/photography-db/pictures/'; // Path to your pictures folder
+// const imageFolder = 'pictures/'; // Path to your pictures folder
+const imageFolder = 'https://api.github.com/repos/DenisBuserski/photography-db/contents/pictures/'; // Path to your pictures folder
 
 const imageModal = document.getElementById('imageModal');
 const closeModal = document.getElementById('closeModal');
@@ -46,7 +46,8 @@ async function fetchImageFiles(folderPath) {
     // }
 
     try {
-        const response = await fetch(`https://api.github.com/repos/DenisBuserski/photography-db/contents/${folderPath}`);
+        // const response = await fetch(`https://api.github.com/repos/DenisBuserski/photography-db/contents/${folderPath}`);
+        const response = await fetch(folderPath);
         const data = await response.json();
 
         const imageFiles = data
