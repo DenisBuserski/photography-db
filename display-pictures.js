@@ -1,5 +1,5 @@
 const imageContainer = document.getElementById('imageContainer');
-const imageFolder = '/photography-db/pictures/'; // Path to your pictures folder
+const imageFolder = '/pictures/'; // Path to your pictures folder
 
 const imageModal = document.getElementById('imageModal');
 const closeModal = document.getElementById('closeModal');
@@ -17,7 +17,7 @@ function loadImages() {
 
             imageFiles.forEach(imageFile => {
                 const imageElement = document.createElement('img');
-                imageElement.src = imageFolder + imageFile;
+                imageElement.src = '/photography-db/' + imageFolder + imageFile;
                 imageContainer.appendChild(imageElement);
 
             });
@@ -31,7 +31,7 @@ function loadImages() {
 async function fetchImageFiles(folderPath) {
   try {
     const apiUrl = `https://api.github.com/repos/denisbuserski/photography-db/contents${folderPath}`;
-    const response = await fetch(apiUrl, { redirect: 'follow' });
+    const response = await fetch(apiUrl);
     
     if (!response.ok) {
       throw new Error(`Failed to fetch images. Status: ${response.status}`);
