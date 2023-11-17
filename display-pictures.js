@@ -31,7 +31,7 @@ function loadImages() {
 async function fetchImageFiles(folderPath) {
   try {
     const apiUrl = `https://api.github.com/repos/denisbuserski/photography-db/contents${folderPath}`;
-    const response = await fetch(apiUrl);
+    const response = await fetch(apiUrl, { redirect: 'follow' });
     
     if (!response.ok) {
       throw new Error(`Failed to fetch images. Status: ${response.status}`);
