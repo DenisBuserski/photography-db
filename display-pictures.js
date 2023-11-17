@@ -1,5 +1,5 @@
 const imageContainer = document.getElementById('imageContainer');
-const imageFolder = '/pictures/'; // Path to your pictures folder
+const imageFolder = '/photography-db/pictures/'; // Path to your pictures folder
 
 const imageModal = document.getElementById('imageModal');
 const closeModal = document.getElementById('closeModal');
