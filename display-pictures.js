@@ -31,7 +31,7 @@ function loadImages() {
 async function fetchImageFiles(folderPath) {
   try {
     // const apiUrl = `https://api.github.com/repos/denisbuserski/photography-db/contents${folderPath}`;
-    const apiUrl = `https://api.github.com/repos/denisbuserski/photography-db/contentsphotography-db/${folderPath}`;
+    const apiUrl = `https://api.github.com/repos/denisbuserski/photography-db/contents/photography-db/${folderPath}`;
     const response = await fetch(apiUrl);
     
     if (!response.ok) {
