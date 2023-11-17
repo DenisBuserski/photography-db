@@ -6,6 +6,8 @@ const closeModal = document.getElementById('closeModal');
 const modalImage = document.getElementById('modalImage');
 
 function loadImages() {
+    fetchImageFiles(imageFolder)
+        .then(imageFiles => {
             // Sort the picture files in reverse numeric order
             imageFiles.sort((a, b) => {
                 const numA = parseInt(a.match(/\d+/)[0]);
@@ -17,8 +19,9 @@ function loadImages() {
                 const imageElement = document.createElement('img');
                 imageElement.src = imageFolder + imageFile;
                 imageContainer.appendChild(imageElement);
+
             });
-        }
+        })
         .catch(error => {
             console.error('Error fetching image files:', error);
         });
