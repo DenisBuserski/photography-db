@@ -17,7 +17,7 @@ function loadImages() {
 
             imageFiles.forEach(imageFile => {
                 const imageElement = document.createElement('img');
-                imageElement.src = imageFolder + imageFile;
+                imageElement.src = '/photography-db/' + imageFolder + imageFile;
                 imageContainer.appendChild(imageElement);
 
             });
