@@ -27,23 +27,44 @@ function loadImages() {
         });
 }
 
-async function fetchImageFiles(folderPath) {
-    try {
-        const response = await fetch(folderPath);
-        const text = await response.text();
-        const parser = new DOMParser();
-        const htmlDoc = parser.parseFromString(text, 'text/html');
+// async function fetchImageFiles(folderPath) {
+//     try {
+//         const response = await fetch(folderPath);
+//         const text = await response.text();
+//         const parser = new DOMParser();
+//         const htmlDoc = parser.parseFromString(text, 'text/html');
 
-        const links = htmlDoc.querySelectorAll('a');
-        const imageFiles = Array.from(links)
-            .filter(link => link.href.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
-            .map(link => link.href.split('/').pop());
+//         const links = htmlDoc.querySelectorAll('a');
+//         const imageFiles = Array.from(links)
+//             .filter(link => link.href.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
+//             .map(link => link.href.split('/').pop());
 
-        return imageFiles;
-    } catch (error) {
-        throw error;
-    }
+//         return imageFiles;
+//     } catch (error) {
+//         throw error;
+//     }
  
+// }
+
+async function fetchImageFiles(folderPath) {
+  try {
+    const apiUrl = `https://api.github.com/repos/denisbuserski/photography-db/contents${folderPath}`;
+    const response = await fetch(apiUrl);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch images. Status: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    const imageFiles = json
+      .filter(item => item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
+      .map(item => item.name);
+
+    return imageFiles;
+  } catch (error) {
+    throw error;
+  }
 }
 
 window.addEventListener('load', loadImages);
