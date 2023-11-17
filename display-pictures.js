@@ -1,5 +1,5 @@
 const imageContainer = document.getElementById('imageContainer');
-const imageFolder = '/pictures/'; // Path to your pictures folder
+const imageFolder = '/photography-db/pictures/'; // Path to your pictures folder
 
 const imageModal = document.getElementById('imageModal');
 const closeModal = document.getElementById('closeModal');
@@ -27,24 +27,6 @@ function loadImages() {
         });
 }
 
-// async function fetchImageFiles(folderPath) {
-//     try {
-//         const response = await fetch(folderPath);
-//         const text = await response.text();
-//         const parser = new DOMParser();
-//         const htmlDoc = parser.parseFromString(text, 'text/html');
-
-//         const links = htmlDoc.querySelectorAll('a');
-//         const imageFiles = Array.from(links)
-//             .filter(link => link.href.match(/\.(jpg|jpeg|png|gif|bmp)$/i))
-//             .map(link => link.href.split('/').pop());
-
-//         return imageFiles;
-//     } catch (error) {
-//         throw error;
-//     }
- 
-// }
 
 async function fetchImageFiles(folderPath) {
   try {
