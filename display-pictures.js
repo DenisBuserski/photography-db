@@ -7,8 +7,39 @@ const closeModal = document.getElementById('closeModal');
 const modalImage = document.getElementById('modalImage');
 
 function loadImages() {
+
+    console.log('Image Folder:', imageFolder);
+
+
+
+
+
+    
     fetchImageFiles(imageFolder)
         .then(imageFiles => {
+
+            // Inside the forEach loop
+imageFiles.forEach(imageFile => {
+    const imageUrl = imageFolder + imageFile;
+    console.log('Image URL:', imageUrl);
+
+    const imageElement = document.createElement('img');
+    imageElement.src = imageUrl;
+    imageContainer.appendChild(imageElement);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+            
             // Sort the picture files in reverse numeric order
             imageFiles.sort((a, b) => {
                 const numA = parseInt(a.match(/\d+/)[0]);
